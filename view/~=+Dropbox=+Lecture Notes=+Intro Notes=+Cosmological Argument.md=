@@ -2,18 +2,18 @@ let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 argglobal
 let s:cpo_save=&cpo
 set cpo&vim
-inoremap <buffer> <silent> <End> g<End>
-inoremap <buffer> <silent> <Home> g<Home>
-inoremap <buffer> <silent> <Down> gj
 inoremap <buffer> <silent> <Up> gk
+inoremap <buffer> <silent> <Down> gj
+inoremap <buffer> <silent> <Home> g<Home>
+inoremap <buffer> <silent> <End> g<End>
 noremap <buffer> <silent> $ g$
 noremap <buffer> <silent> 0 g0
 noremap <buffer> <silent> j gj
 noremap <buffer> <silent> k gk
-noremap <buffer> <silent> <End> g<End>
-noremap <buffer> <silent> <Home> g<Home>
-noremap <buffer> <silent> <Down> gj
 noremap <buffer> <silent> <Up> gk
+noremap <buffer> <silent> <Down> gj
+noremap <buffer> <silent> <Home> g<Home>
+noremap <buffer> <silent> <End> g<End>
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
@@ -118,7 +118,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 21) / 43)
+let s:l = 1 - ((0 * winheight(0) + 21) / 42)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt

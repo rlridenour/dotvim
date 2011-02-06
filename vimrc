@@ -31,7 +31,6 @@ filetype plugin on
 filetype indent on
 
 
-
 set grepprg=grep\ -nH\ $*
 
 
@@ -142,14 +141,13 @@ inoremap <buffer> <silent> <End>  <C-o>g<End>
 :map <C-Up> <PageUp>
 
 
-" map \t :FuzzyFinderTextMate<CR>
 inoremap ;; <Esc>
 
 
-let g:miniBufExplMapWindowNavVim = 1 
-let g:miniBufExplMapWindowNavArrows = 1 
-let g:miniBufExplMapCTabSwitchBufs = 1 
-let g:miniBufExplModSelTarget = 1
+" let g:miniBufExplMapWindowNavVim = 1 
+" let g:miniBufExplMapWindowNavArrows = 1 
+" let g:miniBufExplMapCTabSwitchBufs = 1 
+" let g:miniBufExplModSelTarget = 1
 
 let g:Tex_BIBINPUTS="/Users/Randy/Dropbox/bibtex/randybib/"
 
