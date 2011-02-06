@@ -30,9 +30,12 @@ filetype plugin on
 " load indent files for specific filetypes
 filetype indent on
 
-let g:tex_flavor='latex'
-let g:Tex_ViewRule_pdf='Skim'
-let g:Tex_DefaultTargetFormat='pdf'
+" Latex-Suite settings
+" let g:tex_flavor='latex'
+" let g:Tex_ViewRule_pdf='Skim'
+" let g:Tex_DefaultTargetFormat='pdf'
+" let g:Tex_CompileRule_pdf='pdflatex -interaction=nonstopmode $*'
+
 
 set grepprg=grep\ -nH\ $*
 
@@ -144,7 +147,7 @@ inoremap <buffer> <silent> <End>  <C-o>g<End>
 :map <C-Up> <PageUp>
 
 
-map \t :FuzzyFinderTextMate<CR>
+" map \t :FuzzyFinderTextMate<CR>
 inoremap ;; <Esc>
 
 
@@ -166,5 +169,5 @@ let g:LustyExplorerSuppressRubyWarning = 1
 
 :set hidden
 
-let g:LatexBox_viewer = 'skim'
-let g:LatexBox_latexmk_options = '-pvc'
+let g:LatexBox_viewer = "skim"
+let g:LatexBox_latexmk_options = "-pvc"

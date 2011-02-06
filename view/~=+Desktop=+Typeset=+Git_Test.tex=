@@ -2,18 +2,351 @@ let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 argglobal
 let s:cpo_save=&cpo
 set cpo&vim
+inoremap <buffer> <F6>f :ShowErrors f
+inoremap <buffer> <F6>w :ShowErrors w
+inoremap <buffer> <F6>e :ShowErrors e
+imap <buffer> <silent> <F6>l <Plug>OpenLog
+imap <buffer> <F6>d <Plug>Deletea
+imap <buffer> <F3> <Plug>ATP_ViewOutput
+imap <buffer> <silent> <S-Tab> =atplib#TabCompletion(0)
+inoremap <buffer> <silent> <Plug>ToggleTab :call ATP_ToggleTab()
+imap <buffer> <silent> <F9> <Plug>Tex_Completion
+imap <buffer> <silent> <S-F7> <Plug>Tex_FastCommandChange
+imap <buffer> <silent> <F7> <Plug>Tex_FastCommandInsert
+inoremap <buffer> <silent> <S-F3> =Tex_PutEnvironment("bmatrix")
+inoremap <buffer> <silent> <S-F2> =Tex_PutEnvironment("eqnarray")
+inoremap <buffer> <silent> <S-F1> =Tex_PutEnvironment("eqnarray*")
+imap <buffer> <S-F5> <Plug>ToggleAuTeXa
+imap <buffer> <silent> <F5> <Plug>Tex_FastEnvironmentInsert
+inoremap <buffer> <F1>  		:TexDoc 
 inoremap <buffer> <silent> <End> g<End>
 inoremap <buffer> <silent> <Home> g<Home>
 inoremap <buffer> <silent> <Down> gj
 inoremap <buffer> <silent> <Up> gk
 noremap <buffer> <silent> $ g$
+nmap <buffer> % <Plug>LatexBox_JumpToMatch
+xmap <buffer> % <Plug>LatexBox_JumpToMatch
 noremap <buffer> <silent> 0 g0
+nmap <buffer> 2g< m`vip2<``
+nmap <buffer> 2g> m`vip2>``
+nmap <buffer> 3g< m`vip3<``
+nmap <buffer> 3g> m`vip3>``
+nmap <buffer> 4g< m`vip4<``
+nmap <buffer> 4g> m`vip4>``
+nmap <buffer> 5g< m`vip5<``
+nmap <buffer> 5g> m`vip5>``
+nmap <buffer> 6g< m`vip6<``
+nmap <buffer> 6g> m`vip6>``
+map <buffer> <M <Plug>GotoPreviousDisplayedMath
+map <buffer> <m <Plug>GotoPreviousMath
+map <buffer> <e <Plug>GotoPreviousEnvironment
+vmap <buffer> <p <Plug>vGotoPreviousPart
+nmap <buffer> <p <Plug>GotoPreviousPart
+vmap <buffer> <c <Plug>vGotoPreviousChapter
+nmap <buffer> <c <Plug>GotoPreviousChapter
+vmap <buffer> <s <Plug>vGotoPreviousSection
+nmap <buffer> <s <Plug>GotoPreviousSection
+vmap <buffer> <S <Plug>vGotoPreviousSubSection
+nmap <buffer> <S <Plug>GotoPreviousSubSection
+nmap <buffer> <gf :PInput
+nmap <buffer> <i :PInput
+map <buffer> >M <Plug>GotoNextDisplayedMath
+map <buffer> >m <Plug>GotoNextMath
+map <buffer> >e <Plug>GotoNextEnvironment
+vmap <buffer> >p <Plug>vGotoNextPart
+nmap <buffer> >p <Plug>GotoNextPart
+vmap <buffer> >c <Plug>vGotoNextChapter
+nmap <buffer> >c <Plug>GotoNextChapter
+vmap <buffer> >s <Plug>vGotoNextSection
+nmap <buffer> >s <Plug>GotoNextSection
+vmap <buffer> >S <Plug>vGotoNextSubSection
+nmap <buffer> >S <Plug>GotoNextSubSection
+nmap <buffer> >gf :NInput
+nmap <buffer> >i :NInput
+imap <buffer> <silent> ì <Plug>Tex_LeftRight
+imap <buffer> <silent> ã <Plug>Tex_MathCal
+imap <buffer> <silent> â <Plug>Tex_MathBF
+vmap <buffer> M :WrapSelection '\[', '\]'
+vnoremap <buffer> <silent> [% :exe "normal! gv"|call search('\%(^\s*%.*\n\)\%(^\s*%\)\@!', "bW")
+nnoremap <buffer> <silent> [% :call search('\%(^\s*%.*\n\)\%(^\s*%\)\@!', "bW")
+vnoremap <buffer> <silent> [] m':exe "normal! gv"|call search('\\end\s*{\|\\\@<!\\\]\|\\\@<!\$\$', "bW")
+nnoremap <buffer> <silent> [] m':call search('\\end\s*{\|\\\@<!\\\]\|\\\@<!\$\$', "bW")
+vnoremap <buffer> <silent> [[ m':exe "normal! gv"|call search('\\begin\s*{\|\\\@<!\\\[\|\\\@<!\$\$', "bW")
+nnoremap <buffer> <silent> [[ m':call search('\\begin\s*{\|\\\@<!\\\[\|\\\@<!\$\$', "bW")
+omap <buffer> \ll :Latexmk
+map <buffer> \lL :LatexmkForce
+map <buffer> \lc :LatexmkClean
+map <buffer> \lC :LatexmkCleanAll
+map <buffer> \lg :LatexmkStatus
+map <buffer> \lG :LatexmkStatusDetailed
+map <buffer> \lk :LatexmkStop
+map <buffer> \le :LatexErrors
+omap <buffer> \lv :LatexView
+map <buffer> <silent> \lt :LatexTOC
+vmap <buffer> \lv :LatexView
+nmap <buffer> \b <Plug>BibtexDefault
+nmap <buffer> \B <Plug>SimpleBibtex
+nmap <buffer> \d <Plug>ATP_TeXDebug
+nmap <buffer> \l <Plug>ATP_TeXCurrent
+nmap <buffer> \L <Plug>ATP_Labels
+nmap <buffer> \t <Plug>ATP_TOC
+nmap <buffer> \g <Plug>Getpid
+nmap <buffer> \D <Plug>ToggleDebugMode
+nmap <buffer> \s <Plug>ToggleStar
+nmap <buffer> \v <Plug>ATP_ViewOutput
+vnoremap <buffer> \b\} :WrapSelection '\left\{', '\right\}', 'end'
+vnoremap <buffer> \b} :WrapSelection '\left\{', '\right\}', 'end'
+vnoremap <buffer> \b] :WrapSelection '\left[', '\right]', 'end'
+vnoremap <buffer> \b) :WrapSelection '\left(', '\right)', 'end'
+vnoremap <buffer> \b\{ :WrapSelection '\left\{','\right\}', 'begin'
+vnoremap <buffer> \b{ :WrapSelection '\left\{','\right\}', 'begin'
+vnoremap <buffer> \b[ :WrapSelection '\left[', '\right]', 'begin'
+vnoremap <buffer> \b( :WrapSelection '\left(', '\right)', 'begin'
+vnoremap <buffer> \} :WrapSelection '{', '}', 'end'
+vnoremap <buffer> \\} :WrapSelection '\{', '\}', 'end'
+vnoremap <buffer> \] :WrapSelection '[', ']', 'end'
+vnoremap <buffer> \) :WrapSelection '(', ')', 'end'
+vnoremap <buffer> \{ :WrapSelection '{', '}', 'begin'
+vnoremap <buffer> \\{ :WrapSelection '\{', '\}', 'begin'
+vnoremap <buffer> \[ :WrapSelection '[', ']', 'begin'
+vnoremap <buffer> \( :WrapSelection '(', ')', 'begin'
+vnoremap <buffer> \A :WrapSelection '\begin{align}','\end{align}','0','1'
+vnoremap <buffer> \E :WrapSelection '\begin{equation}','\end{equation}','0','1'
+vnoremap <buffer> \L :WrapSelection '\begin{flushleft}','\end{flushleft}','0','1'
+vnoremap <buffer> \R :WrapSelection '\begin{flushright}','\end{flushright}','0','1'
+vnoremap <buffer> \C :WrapSelection '\begin{center}','\end{center}','0','1'
+vnoremap <buffer> \cal :InteligentWrapSelection [''],['\mathcal{']
+vnoremap <buffer> \no :InteligentWrapSelection ['\textnormal{'],['\mathnormal{']
+vnoremap <buffer> \ov :WrapSelection '\overline{'
+vnoremap <buffer> \un :WrapSelection '\underline{'
+vnoremap <buffer> \md :WrapSelection '\textmd{'
+vnoremap <buffer> \up :WrapSelection '\textup{'
+vmap <buffer> <silent> \sc <Plug>vSelectComment
+vnoremap <buffer> \sl :WrapSelection '\textsl{'
+vnoremap <buffer> \bb :InteligentWrapSelection ['\textbf{'],['\mathbb{']
+vnoremap <buffer> \bf :InteligentWrapSelection ['\textbf{'],['\mathbf{']
+vnoremap <buffer> \tt :InteligentWrapSelection ['\texttt{'],['\mathtt{']
+vnoremap <buffer> \sf :InteligentWrapSelection ['\textsf{'],['\mathsf{']
+vnoremap <buffer> \it :InteligentWrapSelection ['\textit{'],['\mathit{']
+vnoremap <buffer> \em :InteligentWrapSelection ['\emph{'],['\mathit{']
+vnoremap <buffer> \rm :InteligentWrapSelection ['\textrm{'],['\mathrm{']
+vnoremap <buffer> \tx :InteligentWrapSelection ['\textrm{'],['\text{']
+vnoremap <buffer> \f :WrapSelection '{\usefont{OT1}{}{}{}\selectfont ', '}', '14'
+nmap <buffer> <silent> \rf <Plug>Tex_RefreshFolds
+nnoremap <buffer> \ls :call Tex_ForwardSearchLaTeX()
+nnoremap <buffer> \lv :call ViewLaTeX()
+vnoremap <buffer> \ll :call Tex_PartCompile()
+nnoremap <buffer> \ll :call RunLaTeX()
+vnoremap <buffer> <silent> ]% :exe "normal! gv"|call search('^\(\s*%.*\n\)\@<!\(\s*%\)', "W")
+nnoremap <buffer> <silent> ]% :call search('^\(\s*%.*\n\)\@<!\(\s*%\)', "W")
+vnoremap <buffer> <silent> ][ m':exe "normal! gv"|call search('\\end\s*{\|\\\@<!\\\]\|\\\@<!\$\$', "W")
+nnoremap <buffer> <silent> ][ m':call search('\\end\s*{\|\\\@<!\\\]\|\\\@<!\$\$', "W")
+vnoremap <buffer> <silent> ]] m':exe "normal! gv"|call search('\\begin\s*{\|\\\@<!\\\[\|\\\@<!\$\$', "W")
+nnoremap <buffer> <silent> ]] m':call search('\\begin\s*{\|\\\@<!\\\[\|\\\@<!\$\$', "W")
+nmap <buffer> `	 <Plug>ToggleTab
+vmap <buffer> ae <Plug>LatexBox_SelectCurrentEnvOuter
+omap <buffer> ae :normal vae
+vmap <buffer> a$ <Plug>LatexBox_SelectInlineMathOuter
+omap <buffer> a$ :normal va$
+omap <buffer> am :normal vam
+vmap <buffer> am <Plug>LatexBox_SelectInlineMathOuter
+vmap <buffer> <silent> aS <Plug>SelectOuterSyntax
+omap <buffer> ap :normal vap
+vmap <buffer> <silent> ap <Plug>ATP_SelectCurrentParagraphOuter
+nmap <buffer> g< m`vip<``
+nmap <buffer> g> m`vip>``
+nmap <buffer> gw m`vipgq``
+nnoremap <buffer> <silent> gf :call GotoFile("", "")
+vmap <buffer> ie <Plug>LatexBox_SelectCurrentEnvInner
+omap <buffer> ie :normal vie
+vmap <buffer> i$ <Plug>LatexBox_SelectInlineMathInner
+omap <buffer> i$ :normal vi$
+omap <buffer> im :normal vim
+vmap <buffer> im <Plug>LatexBox_SelectInlineMathInner
+vmap <buffer> iE <Plug>LatexBox_SelectCurrentEnVInner
+vmap <buffer> <silent> iS <Plug>SelectInnerSyntax
+omap <buffer> ip :normal vip
+vmap <buffer> <silent> ip <Plug>ATP_SelectCurrentParagraphInner
 noremap <buffer> <silent> j gj
 noremap <buffer> <silent> k gk
+vmap <buffer> m :WrapSelection '\(', '\)'
+nnoremap <buffer> <F6>g <Plug>PdfFonts
+nnoremap <buffer> <F6>f :ShowErrors f
+nnoremap <buffer> <F6>r :ShowErrors rc
+nnoremap <buffer> <F6>w :ShowErrors w
+nnoremap <buffer> <F6> :ShowErrors e
+nmap <buffer> <silent> <F6>l <Plug>OpenLog
+nmap <buffer> <F6>d <Plug>Delete
+nmap <buffer> <F3> <Plug>ATP_ViewOutput
+nmap <buffer> <C-S-F4> <Plug>LatexEnvPrompt
+nmap <buffer> <S-F4> <Plug>ToggleEnvForward
+nmap <buffer> <F4> <Plug>ChangeEnv
+nmap <buffer> <F2> <Plug>ToggleSpace
+nnoremap <buffer> <silent> <S-Tab> :call atplib#TabCompletion(0,1) 
+nnoremap <buffer> <Plug>SshPrint :SshPrint 
+nnoremap <buffer> <silent> <Plug>TexDoc :TexDoc 
+nnoremap <buffer> <silent> <Plug>GotoPreviousDisplayedMath :PEnv displayedmath
+nnoremap <buffer> <silent> <Plug>GotoNextDisplayedMath :NEnv displayedmath
+nnoremap <buffer> <silent> <Plug>GotoPreviousInlineMath :PEnv inlinemath
+nnoremap <buffer> <silent> <Plug>GotoNextInlineMath :Nenv inlinemath
+nnoremap <buffer> <silent> <Plug>GotoPreviousMath :PEnv math
+nnoremap <buffer> <silent> <Plug>GotoNextMath :NEnv math
+nnoremap <buffer> <silent> <Plug>GotoPreviousEnvironment :PEnv 
+nnoremap <buffer> <silent> <Plug>GotoNextEnvironment :NEnv 
+vmap <buffer> <silent> <Plug>vSelectComment :call SelectComment()
+nnoremap <buffer> <silent> <Plug>ToggleTab :call ATP_ToggleTab()
+nnoremap <buffer> <silent> <Plug>ToggleDebugMode :call ATP_ToggleDebugMode()
+nnoremap <buffer> <silent> <Plug>ToggleCallBack :call ATP_ToggleCallBack()
+nnoremap <buffer> <silent> <Plug>ToggleCheckMathOpened :call ATP_ToggleCheckMathOpened()
+nnoremap <buffer> <silent> <Plug>ToggleSpace :call ATP_ToggleSpace()
+nnoremap <buffer> <silent> <Plug>ToggleAuTeX :call ATP_ToggleAuTeX()
+nnoremap <buffer> <silent> <Plug>SetXpdf :call SetXpdf()
+nnoremap <buffer> <silent> <Plug>SetXdvi :call SetXdvi()
+vnoremap <buffer> <silent> <F7> :WrapSelection '\{','}','begin'
+nmap <buffer> <silent> <S-F7> <Plug>Tex_FastCommandChange
+nmap <buffer> <silent> <F7> <Plug>Tex_FastCommandInsert
+vmap <buffer> <silent> <F5> <Plug>Tex_FastEnvironmentInsert
+nmap <buffer> <S-F5> <Plug>ToggleAuTeX
+nmap <buffer> <F5> <Plug>ATP_TeXVerbose
+nnoremap <buffer> <F1> :TexDoc 
 noremap <buffer> <silent> <End> g<End>
 noremap <buffer> <silent> <Home> g<Home>
 noremap <buffer> <silent> <Down> gj
 noremap <buffer> <silent> <Up> gk
+imap <buffer> <silent> 	 =atplib#TabCompletion(1)
+imap <buffer> #- \setminus
+imap <buffer> #+ \bigcup
+imap <buffer> #& \wedge
+imap <buffer> #Z \mathrm{Z}
+imap <buffer> #W \Omega
+imap <buffer> #U \Upsilon
+imap <buffer> #T \Tau
+imap <buffer> #S \Sigma
+imap <buffer> #O \Theta
+imap <buffer> #P \Pi
+imap <buffer> #N \Nu
+imap <buffer> #M \Mu
+imap <buffer> #L \Lambda
+imap <buffer> #G \Gamma
+imap <buffer> #F \Phi
+imap <buffer> #Y \Psi
+imap <buffer> #D \Delta
+imap <buffer> #z \zeta
+imap <buffer> #x \xi
+imap <buffer> #w \omega
+imap <buffer> #vo \vartheta
+imap <buffer> #vs \varsigma
+imap <buffer> #u \upsilon
+imap <buffer> #t \tau
+imap <buffer> #s \sigma
+imap <buffer> #r \rho
+imap <buffer> #o \theta
+imap <buffer> #p \pi
+imap <buffer> #n \nu
+imap <buffer> #m \mu
+imap <buffer> #i \iota
+imap <buffer> #l \lambda
+imap <buffer> #k \kappa
+imap <buffer> #h \eta
+imap <buffer> #g \gamma
+imap <buffer> #y \psi
+imap <buffer> #f \phi
+imap <buffer> #ve \varepsilon
+imap <buffer> #e \epsilon
+imap <buffer> #d \delta
+imap <buffer> #c \chi
+imap <buffer> #b \beta
+imap <buffer> #a \alpha
+inoremap <buffer> ##cal \mathcal{}<Left>
+inoremap <buffer> ##bb \mathbb{}<Left>
+inoremap <buffer> ##no :call Insert("\\textnormal{", "\\mathnormal{")a
+inoremap <buffer> ##em \emph{}<Left>
+inoremap <buffer> ##tt :call Insert("\\texttt{", "\\mathtt{")a
+inoremap <buffer> ##bf :call Insert("\\textbf{", "\\mathbf{")a
+inoremap <buffer> ##sf :call Insert("\\textsf{", "\\mathsf{")a
+inoremap <buffer> ##sc \textsc{}<Left>
+inoremap <buffer> ##sl \textsl{}<Left>
+inoremap <buffer> ##it :call Insert("\\textit{", "\\mathit{")a
+inoremap <buffer> ##md \textmd{}<Left>
+inoremap <buffer> ##up \textup{}<Left>
+inoremap <buffer> ##rm :call Insert("\\textrm{", "\\mathrm{")a
+vnoremap <buffer> <silent> ã `>a}`<i\mathcal{
+vnoremap <buffer> <silent> â `>a}`<i\mathbf{
+imap <buffer> ]M \[\]<Left><Left>
+imap <buffer> ]m \(\)<Left><Left>
+imap <buffer> ]f \begin{frame}\end{frame}O
+imap <buffer> ]T \begin{center}\begin{tikzpicture}\end{tikzpicture}\end{center}<Up><Up>
+imap <buffer> ]R \begin{flushright}\end{flushright}O
+imap <buffer> ]L \begin{flushleft}\end{flushleft}O
+imap <buffer> ]c \begin{center}\end{center}O
+imap <buffer> ]q \begin{equation}\end{equation}O
+imap <buffer> ]a \begin{align}\end{align}O
+imap <buffer> ]i :call InsertItem()a
+imap <buffer> ]I \begin{itemize}\end{itemize}O
+imap <buffer> ]E \begin{enumerate}\end{enumerate}O
+imap <buffer> ]n \begin{note}\end{note}O
+imap <buffer> ]x \begin{example}\end{example}O
+imap <buffer> ]p \begin{proof}\end{proof}O
+imap <buffer> ]C \begin{corollary}\end{corollary}O
+imap <buffer> ]r \begin{remark}\end{remark}O
+imap <buffer> ]l \begin{lemma}\end{lemma}O
+imap <buffer> ]P \begin{proposition}\end{proposition}O
+imap <buffer> ]d \begin{definition}\end{definition}O
+imap <buffer> ]t \begin{theorem}\end{theorem}O
+imap <buffer> ]e \end{}<Left>
+imap <buffer> ]b \begin{}<Left>
+inoremap <buffer> ]] ]
+imap <buffer> _8 \infty
+imap <buffer> `	 <Plug>ToggleTab
+iabbr <buffer> =example= \begin{example}\end{example}O
+iabbr <buffer> =remark= \begin{remark}\end{remark}O
+iabbr <buffer> =proof= \begin{proof}\end{proof}O
+iabbr <buffer> =definition= \begin{definition}\end{definition}O
+iabbr <buffer> =lemma= \begin{lemma}\end{lemma}O
+iabbr <buffer> =proposition= \begin{proposition}\end{proposition}O
+iabbr <buffer> =theorem= \begin{theorem}\end{theorem}O
+iabbr <buffer> =corollary= \begin{corollary}\end{corollary}O
+iabbr <buffer> =flalign*= \begin{flalign*}\end{flalign*}O
+iabbr <buffer> =flalign= \begin{flalign}\end{flalign}O
+iabbr <buffer> =split= \begin{split}\end{split}O
+iabbr <buffer> =multline*= \begin{multline*}\end{multline*}O
+iabbr <buffer> =multline= \begin{multline}\end{multline}O
+iabbr <buffer> =gather*= \begin{gather*}\end{gather*}O
+iabbr <buffer> =gather= \begin{gather}\end{gather}O
+iabbr <buffer> =alignat*= \begin{alignat*}\end{alignat*}O
+iabbr <buffer> =alignat= \begin{alignat}\end{alignat}O
+iabbr <buffer> =align*= \begin{align*}\end{align*}O
+iabbr <buffer> =align= \begin{align}\end{align}O
+iabbr <buffer> =equation*= \begin{equation*}\end{equation*}O
+iabbr <buffer> =equation= \begin{equation}\end{equation}O
+iabbr <buffer> =tabular= \begin{tabular}\end{tabular}<Up>A
+iabbr <buffer> =table= \begin{table}\end{table}O
+iabbr <buffer> =array= \begin{array}\end{array}O
+iabbr <buffer> =figure= \begin{figure}\end{figure}O
+iabbr <buffer> =verbatim= \begin{verbatim}\end{verbatim}O
+iabbr <buffer> =abstract= \begin{abstract}\end{abstract}O
+iabbr <buffer> =verse= \begin{verse}\end{verse}O
+iabbr <buffer> =quotation= \begin{quotation}\end{quotation}O
+iabbr <buffer> =quote= \begin{quote}\end{quote}O
+iabbr <buffer> =enumerate= \begin{enumerate}\end{enumerate}O
+iabbr <buffer> =itemize= \begin{itemize}\end{itemize}O
+iabbr <buffer> =frame= \begin{frame}\end{frame}O
+iabbr <buffer> =tikzpicture= \begin{tikzpicture}\end{tikzpicture}O
+iabbr <buffer> =flushleft= \begin{flushleft}\end{flushleft}O
+iabbr <buffer> =flushright= \begin{flushright}\end{flushright}O
+iabbr <buffer> =center= \begin{center}\end{center}O
+iabbr <buffer> =thebibliography= \begin{thebibliography}\end{thebibliography}<Up>A
+iabbr <buffer> =bibliography= \begin{thebibliography}\end{thebibliography}<Up>A
+iabbr <buffer> =titlepage= \begin{titlepage}\end{titlepage}O
+iabbr <buffer> =minipage= \begin{minipage}\end{minipage}<Up>A
+iabbr <buffer> =list= \begin{list}\end{list}O
+iabbr <buffer> =picture= \begin{picture}()()\end{picture}<Up>f(a
+iabbr <buffer> =letter= \begin{letter}\end{letter}O
+iabbr <buffer> =description= egin{description}nd{description}O
+iabbr <buffer> =document= egin{document}nd{document}O
+iabbr <buffer> ++ \ddagger
+iabbr <buffer> +| \dagger
+iabbr <buffer> +- \pm
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
@@ -76,7 +409,7 @@ setlocal linebreak
 setlocal nolisp
 setlocal nolist
 setlocal nomacmeta
-setlocal makeprg=
+setlocal makeprg=pdflatex\ -interaction=nonstopmode\ $*
 setlocal matchpairs=(:),{:},[:]
 setlocal modeline
 setlocal modifiable
@@ -118,12 +451,24 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 49 - ((42 * winheight(0) + 21) / 43)
+26,29fold
+30,37fold
+38,41fold
+42,48fold
+26
+normal zo
+30
+normal zo
+38
+normal zo
+42
+normal zo
+let s:l = 49 - ((38 * winheight(0) + 21) / 43)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 49
-normal! 02l
+normal! 0
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :
