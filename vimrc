@@ -30,11 +30,6 @@ filetype plugin on
 " load indent files for specific filetypes
 filetype indent on
 
-" Latex-Suite settings
-" let g:tex_flavor='latex'
-" let g:Tex_ViewRule_pdf='Skim'
-" let g:Tex_DefaultTargetFormat='pdf'
-" let g:Tex_CompileRule_pdf='pdflatex -interaction=nonstopmode $*'
 
 
 set grepprg=grep\ -nH\ $*
