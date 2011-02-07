@@ -13,3 +13,6 @@
 [submodule "bundle/LustyExplorer"]
 	path = bundle/LustyExplorer
 	url = https://github.com/vim-scripts/LustyExplorer.git
+[submodule "bundle/Command-T"]
+	path = bundle/Command-T
+	url = https://github.com/wincent/Command-T.git
