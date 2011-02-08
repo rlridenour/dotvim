@@ -138,7 +138,10 @@ inoremap <buffer> <silent> <End>  <C-o>g<End>
 :map <C-Down> <PageDown>
 :map <C-Up> <PageUp>
 
+" Map space to search
+map <space> /
 
+"Use ;; to escape
 inoremap ;; <Esc>
 
 " Remap omni-completion to CTRL+SPACE
