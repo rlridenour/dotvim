@@ -34,10 +34,9 @@ filetype indent on
 set grepprg=grep\ -nH\ $*
 
 
-helptags ~/.vim/doc
 
-au BufWinLeave * mkview
-au BufWinEnter * silent loadview
+au BufWinLeave ?* mkview
+au BufWinEnter ?* silent loadview
 
 set confirm
 
@@ -84,13 +83,12 @@ set showcmd
 set background=dark
 syntax on
 " colorscheme torte
-colorscheme oceanblack
+colorscheme ir_black
 set linebreak
 set spell
 set enc=utf-8
 
 
-helptags ~/.vim/doc
 
 " Turn on line numbering. Turn it off with "set nonu"
 set nu

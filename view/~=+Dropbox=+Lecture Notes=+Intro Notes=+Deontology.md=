@@ -1,22 +1,9 @@
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 argglobal
-let s:cpo_save=&cpo
-set cpo&vim
-inoremap <buffer> <silent> <End> g<End>
-inoremap <buffer> <silent> <Home> g<Home>
-inoremap <buffer> <silent> <Down> gj
-inoremap <buffer> <silent> <Up> gk
-noremap <buffer> <silent> $ g$
-noremap <buffer> <silent> 0 g0
-noremap <buffer> <silent> j gj
-noremap <buffer> <silent> k gk
-noremap <buffer> <silent> <End> g<End>
-noremap <buffer> <silent> <Home> g<Home>
-noremap <buffer> <silent> <Down> gj
-noremap <buffer> <silent> <Up> gk
-let &cpo=s:cpo_save
-unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
 setlocal autoindent
+setlocal balloonexpr=
 setlocal nobinary
 setlocal bufhidden=
 setlocal buflisted
@@ -29,6 +16,8 @@ setlocal colorcolumn=
 setlocal comments=n:&gt;
 setlocal commentstring=>\ %s
 setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
 setlocal completefunc=
 setlocal nocopyindent
 setlocal cryptmethod=
@@ -58,8 +47,8 @@ setlocal formatexpr=
 setlocal formatoptions=tcroqn2
 setlocal formatlistpat=^\\s*\\d\\+\\.\\s\\+\\|^[-*+]\\s\\+
 setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=0
+setlocal iminsert=2
+setlocal imsearch=2
 setlocal include=
 setlocal includeexpr=
 setlocal indentexpr=
@@ -70,6 +59,7 @@ setlocal keywordprg=
 setlocal linebreak
 setlocal nolisp
 setlocal nolist
+setlocal nomacmeta
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:],<:>
 setlocal modeline
@@ -84,13 +74,15 @@ setlocal nopreviewwindow
 setlocal quoteescape=\\
 setlocal noreadonly
 setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
 setlocal noscrollbind
 setlocal shiftwidth=4
 setlocal noshortname
 setlocal smartindent
 setlocal softtabstop=0
 setlocal spell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellcapcheck=
 setlocal spellfile=
 setlocal spelllang=en
 setlocal statusline=
@@ -110,7 +102,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 29) / 58)
+let s:l = 1 - ((0 * winheight(0) + 21) / 42)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
