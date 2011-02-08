@@ -141,6 +141,9 @@ inoremap <buffer> <silent> <End>  <C-o>g<End>
 
 inoremap ;; <Esc>
 
+" Remap omni-completion to CTRL+SPACE
+" inoremap <> <C-x><C-o>
+
 
 " let g:miniBufExplMapWindowNavVim = 1 
 " let g:miniBufExplMapWindowNavArrows = 1 
@@ -157,6 +160,12 @@ augroup END
 
 " Turn off LustyExplorer ruby warning
 let g:LustyExplorerSuppressRubyWarning = 1
+
+" NERDTree settings (launch with \nt or \\)
+let g:NERDTreeQuitOnOpen = 1
+nmap <silent> <leader>nt <Esc>:NERDTreeToggle<CR>
+nmap <silent> <leader>\ <Esc>:NERDTreeToggle<CR>
+ 
 
 :set hidden
 

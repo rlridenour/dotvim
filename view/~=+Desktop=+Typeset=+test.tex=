@@ -30,10 +30,15 @@ omap <buffer> ie :normal vie
 vmap <buffer> ie <Plug>LatexBox_SelectCurrentEnvInner
 noremap <buffer> <silent> j gj
 noremap <buffer> <silent> k gk
+vmap <buffer> <S-F7> <Plug>LatexWrapSelectionEnv
+vmap <buffer> <F7> <Plug>LatexWrapSelection
+nmap <buffer> <F5> <Plug>LatexChangeEnv
 noremap <buffer> <silent> <End> g<End>
 noremap <buffer> <silent> <Home> g<Home>
 noremap <buffer> <silent> <Down> gj
 noremap <buffer> <silent> <Up> gk
+imap <buffer> [[ \begin{
+imap <buffer> ]] <Plug>LatexCloseLastEnv
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
@@ -138,11 +143,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 45 - ((44 * winheight(0) + 24) / 49)
+let s:l = 59 - ((29 * winheight(0) + 24) / 49)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-45
+59
 normal! 0
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
