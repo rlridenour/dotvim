@@ -44,7 +44,7 @@ set confirm
 set timeoutlen=2000
 
 " Default font
-set guifont=Inconsolata:h14
+" set guifont=Inconsolata:h14
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Searching
 

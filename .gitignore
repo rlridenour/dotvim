@@ -1,3 +1,6 @@
 
 # Ignore View directory
 view/**/*
+
+# Ignore tags
+tags
