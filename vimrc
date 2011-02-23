@@ -144,6 +144,22 @@ map <space> /
 "Use ;; to escape
 inoremap ;; <Esc>
 
+" Window splitting
+
+nmap <silent> <leader>sh :leftabove vnew<cr>
+nmap <silent> <leader>sl :rightbelow vnew<cr>
+nmap <silent> <leader>sk :leftabove new<cr>
+nmap <silent> <leader>sj :rightbelow new<cr>
+nmap <silent> <leader>swh :topleft vnew<cr>
+nmap <silent> <leader>swl :botright vnew<cr>
+nmap <silent> <leader>swk :topleft new<cr>
+nmap <silent> <leader>swj :botright new<cr>
+
+" Scroll the window next to the current one
+"   (especially useful for two-window split)
+nmap <silent> <leader>j <c-w>w<c-d><c-w>W
+nmap <silent> <leader>k <c-w>w<c-u><c-w>W
+
 " Remap omni-completion to CTRL+SPACE
 " inoremap <> <C-x><C-o>
 
