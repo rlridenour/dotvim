@@ -1,18 +1,27 @@
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+	 ignore = untracked
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
 	url = https://github.com/msanders/snipmate.vim.git
+	 ignore = untracked
 [submodule "bundle/vim-markdown"]
 	path = bundle/vim-markdown
 	url = https://github.com/tpope/vim-markdown.git
+	 ignore = untracked
 [submodule "bundle/latex-box"]
 	path = bundle/latex-box
 	url = https://github.com/olivierverdier/vim-latex-box.git
+	 ignore = untracked
 [submodule "bundle/LustyExplorer"]
 	path = bundle/LustyExplorer
 	url = https://github.com/vim-scripts/LustyExplorer.git
+	 ignore = untracked
 [submodule "bundle/Command-T"]
 	path = bundle/Command-T
 	url = https://github.com/wincent/Command-T.git
+	 ignore = untracked
+[submodule "bundle/vim-preview"]
+	path = bundle/vim-preview
+	url = https://github.com/greyblake/vim-preview.git

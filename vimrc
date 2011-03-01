@@ -169,6 +169,35 @@ nmap <silent> <leader>k <c-w>w<c-u><c-w>W
 " let g:miniBufExplMapCTabSwitchBufs = 1 
 " let g:miniBufExplModSelTarget = 1
 
+
+
+" Markdown folding
+
+function! MarkdownLevel()
+    if getline(v:lnum) =~ '^# .*$'
+        return ">1"
+    endif
+    if getline(v:lnum) =~ '^## .*$'
+        return ">2"
+    endif
+    if getline(v:lnum) =~ '^### .*$'
+        return ">3"
+    endif
+    if getline(v:lnum) =~ '^#### .*$'
+        return ">4"
+    endif
+    if getline(v:lnum) =~ '^##### .*$'
+        return ">5"
+    endif
+    if getline(v:lnum) =~ '^###### .*$'
+        return ">6"
+    endif
+    return "=" 
+endfunction
+au BufEnter *.md setlocal foldexpr=MarkdownLevel()  
+au BufEnter *.md setlocal foldmethod=expr     
+
+
 let g:Tex_BIBINPUTS="/Users/Randy/Dropbox/bibtex/randybib/"
 
 augroup mkd
